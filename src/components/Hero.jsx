@@ -2,7 +2,6 @@ import profile from "../assets/profile.jpeg";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
-import ParticlesBackground from "./ParticlesBackground";
 
 function Hero() {
   return (
@@ -12,7 +11,6 @@ function Hero() {
     >
       {/* Animated Particle Background */}
       <div className="absolute inset-0 -z-20">
-        <ParticlesBackground />
       </div>
 
       {/* Glow Background */}
