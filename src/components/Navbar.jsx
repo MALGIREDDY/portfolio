@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-scroll";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const menuItems = [
     "home",
     "about",
@@ -16,7 +20,6 @@ function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
         {/* Logo */}
-
         <Link
           to="home"
           smooth={true}
@@ -28,14 +31,11 @@ function Navbar() {
           </h1>
         </Link>
 
-        {/* Navigation */}
-
-        <ul className="hidden md:flex gap-8">
+        {/* Desktop Menu */}
+        <ul className="hidden lg:flex gap-8">
 
           {menuItems.map((item) => (
-
             <li key={item}>
-
               <Link
                 to={item}
                 smooth={true}
@@ -47,24 +47,75 @@ function Navbar() {
               >
                 {item}
               </Link>
-
             </li>
-
           ))}
 
         </ul>
 
-        {/* Resume */}
-
+        {/* Resume Button (Desktop) */}
         <a
           href="/resume.pdf"
           download
-          className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 px-5 py-2 rounded-xl font-semibold transition-all duration-300 shadow-lg"
+          className="hidden lg:block bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 px-5 py-2 rounded-xl font-semibold transition-all duration-300 shadow-lg"
         >
           Resume
         </a>
 
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden text-2xl text-cyan-400"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
       </div>
+
+      {/* Mobile Menu */}
+
+      {menuOpen && (
+
+        <div className="lg:hidden bg-slate-900 border-t border-slate-700">
+
+          <ul className="flex flex-col text-center py-4">
+
+            {menuItems.map((item) => (
+
+              <li key={item} className="py-3">
+
+                <Link
+                  to={item}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setMenuOpen(false)}
+                  className="capitalize text-lg text-gray-300 hover:text-cyan-400 cursor-pointer"
+                >
+                  {item}
+                </Link>
+
+              </li>
+
+            ))}
+
+            <li className="pt-4">
+
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-semibold"
+              >
+                Download Resume
+              </a>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      )}
+
     </nav>
   );
 }
