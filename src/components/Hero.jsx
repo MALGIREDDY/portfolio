@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 function Hero() {
   return (
     <section
-      id="home"
-      className="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white flex items-center overflow-hidden"
-    >
+  id="home"
+  className="relative min-h-screen pt-24 bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white flex items-center overflow-hidden"
+>
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -27,10 +27,6 @@ function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-
-            <div className="inline-block bg-cyan-500/20 border border-cyan-400 text-cyan-300 px-4 py-2 rounded-full text-sm mb-6">
-              💼 AI • DevOps • Cyber Security Portfolio
-            </div>
 
             <p className="text-cyan-400 text-xl mb-4">
               👋 Hello, I'm
