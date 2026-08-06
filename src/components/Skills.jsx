@@ -12,62 +12,149 @@ import {
   SiGithubactions,
   SiJavascript,
   SiTailwindcss,
+  SiFlask,
+  SiDjango,
+  SiPostman,
+  SiVercel,
 } from "react-icons/si";
 
-const skills = [
-  { name: "Python", icon: <FaPython />, color: "text-yellow-400" },
-  { name: "JavaScript", icon: <SiJavascript />, color: "text-yellow-300" },
-  { name: "React", icon: <FaReact />, color: "text-cyan-400" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-cyan-300" },
-  { name: "Docker", icon: <FaDocker />, color: "text-blue-400" },
-  { name: "Git", icon: <FaGitAlt />, color: "text-orange-500" },
-  { name: "GitHub", icon: <FaGithub />, color: "text-white" },
-  { name: "GitHub Actions", icon: <SiGithubactions />, color: "text-blue-300" },
-  { name: "Linux", icon: <FaLinux />, color: "text-yellow-500" },
-  { name: "Artificial Intelligence", icon: "🤖", color: "" },
-  { name: "Machine Learning", icon: "🧠", color: "" },
-  { name: "Cyber Security", icon: "🔒", color: "" },
+const skillCategories = [
+  {
+    title: "💻 Frontend",
+    skills: ["React", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"],
+  },
+  {
+    title: "⚙️ Backend",
+    skills: ["Python", "Flask", "Django", "REST APIs"],
+  },
+  {
+    title: "🐳 DevOps",
+    skills: [
+      "Docker",
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+      "Linux",
+      "Bash",
+    ],
+  },
+  {
+    title: "🤖 AI / Machine Learning",
+    skills: [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Data Analysis",
+      "Python",
+    ],
+  },
+  {
+    title: "🔒 Cyber Security",
+    skills: [
+      "Cyber Security",
+      "Linux",
+      "Networking",
+      "System Security",
+    ],
+  },
+  {
+    title: "🛠 Tools",
+    skills: [
+      "VS Code",
+      "Postman",
+      "GitHub",
+      "Vercel",
+    ],
+  },
 ];
+
+const icons = {
+  React: <FaReact className="text-cyan-400" />,
+  JavaScript: <SiJavascript className="text-yellow-300" />,
+  Python: <FaPython className="text-yellow-400" />,
+  Docker: <FaDocker className="text-blue-400" />,
+  Git: <FaGitAlt className="text-orange-500" />,
+  GitHub: <FaGithub />,
+  Linux: <FaLinux className="text-yellow-400" />,
+  "GitHub Actions": <SiGithubactions className="text-blue-400" />,
+  "Tailwind CSS": <SiTailwindcss className="text-cyan-300" />,
+  Flask: <SiFlask />,
+  Django: <SiDjango className="text-green-500" />,
+  Postman: <SiPostman className="text-orange-500" />,
+  Vercel: <SiVercel />,
+};
 
 function Skills() {
   return (
     <section
       id="skills"
-      className="bg-slate-950 text-white py-24 px-6"
+      className="bg-slate-950 text-white py-28 px-6"
     >
       <div className="max-w-7xl mx-auto">
 
-        <motion.h2
+        {/* Heading */}
+
+        <motion.div
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-center text-cyan-400 mb-16"
+          className="text-center mb-20"
         >
-          Technical Skills
-        </motion.h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <p className="uppercase tracking-[8px] text-cyan-400 font-semibold">
+            TECH STACK
+          </p>
 
-          {skills.map((skill, index) => (
+          <h2 className="text-5xl md:text-6xl font-black mt-3">
+            Technologies
+            <span className="text-cyan-400"> I Use</span>
+          </h2>
+
+          <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-6"></div>
+
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {skillCategories.map((category, index) => (
+
             <motion.div
-              key={skill.name}
+              key={category.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: index * 0.1 }}
               whileHover={{
-                scale: 1.05,
-                rotate: 2,
+                y: -8,
               }}
-              className="bg-slate-800 border border-slate-700 rounded-2xl p-8 text-center shadow-xl"
+              className="bg-white/5 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-8 shadow-2xl hover:border-cyan-400 transition-all duration-500"
             >
-              <div className={`text-6xl mb-5 ${skill.color}`}>
-                {skill.icon}
+
+              <h3 className="text-2xl font-bold mb-6 text-cyan-400">
+                {category.title}
+              </h3>
+
+              <div className="space-y-4">
+
+                {category.skills.map((skill) => (
+
+                  <div
+                    key={skill}
+                    className="flex items-center gap-3 text-lg"
+                  >
+
+                    <div className="text-2xl">
+                      {icons[skill] || "✔️"}
+                    </div>
+
+                    <span>{skill}</span>
+
+                  </div>
+
+                ))}
+
               </div>
 
-              <h3 className="text-xl font-semibold">
-                {skill.name}
-              </h3>
             </motion.div>
+
           ))}
 
         </div>

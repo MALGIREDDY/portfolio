@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaCalendarAlt, FaAward } from "react-icons/fa";
 
 // PDF Certificates
 import awsCert from "../assets/certificates/aws-ml.pdf";
@@ -47,66 +47,100 @@ function Certificates() {
   return (
     <section
       id="certificates"
-      className="bg-slate-900 text-white py-24 px-6"
+      className="bg-slate-950 text-white py-28 px-6"
     >
       <div className="max-w-7xl mx-auto">
 
-        <motion.h2
+        {/* Heading */}
+
+        <motion.div
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-center text-cyan-400 mb-16"
+          className="text-center mb-20"
         >
-          Certifications
-        </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <p className="uppercase tracking-[8px] text-cyan-400 font-semibold">
+            CERTIFICATIONS
+          </p>
+
+          <h2 className="text-5xl md:text-6xl font-black mt-3">
+            Professional
+            <span className="text-cyan-400"> Learning</span>
+          </h2>
+
+          <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mt-6"></div>
+
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
 
           {certificates.map((certificate, index) => (
+
             <motion.div
               key={certificate.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
-              whileHover={{ scale: 1.03 }}
-              className="bg-slate-800 rounded-2xl shadow-xl overflow-hidden border border-slate-700"
+              transition={{ delay: index * 0.1 }}
+              whileHover={{
+                y: -8,
+              }}
+              className="bg-white/5 backdrop-blur-xl border border-cyan-500/20 rounded-3xl overflow-hidden shadow-2xl hover:border-cyan-400 transition-all duration-500"
             >
 
-              <div className="bg-white flex justify-center items-center p-6">
-                <img
+              {/* Logo */}
+
+              <div className="bg-white p-8 flex justify-center">
+
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                   src={certificate.logo}
                   alt={certificate.issuer}
-                  className="h-16 object-contain"
+                  className="h-20 object-contain"
                 />
+
               </div>
 
-              <div className="p-6">
+              <div className="p-8">
 
-                <h3 className="text-2xl font-bold mb-3">
+                <h3 className="text-2xl font-bold mb-4 leading-9">
                   {certificate.title}
                 </h3>
 
-                <p className="text-gray-400">
-                  {certificate.issuer}
-                </p>
+                <div className="flex items-center gap-3 text-gray-300 mb-3">
 
-                <p className="text-cyan-400 mt-2">
-                  {certificate.year}
-                </p>
+                  <FaAward className="text-cyan-400" />
+
+                  <span>{certificate.issuer}</span>
+
+                </div>
+
+                <div className="flex items-center gap-3 text-cyan-400 mb-8">
+
+                  <FaCalendarAlt />
+
+                  <span>{certificate.year}</span>
+
+                </div>
 
                 <a
                   href={certificate.file}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 bg-cyan-500 hover:bg-cyan-400 px-6 py-3 rounded-xl transition"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 transition-all duration-300"
                 >
+
                   <FaEye />
+
                   View Certificate
+
                 </a>
 
               </div>
 
             </motion.div>
+
           ))}
 
         </div>

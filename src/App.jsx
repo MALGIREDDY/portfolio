@@ -4,11 +4,9 @@ import Loader from "./components/Loader";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Stats from "./components/Stats";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Achievements from "./components/Achievements";
 import Education from "./components/Education";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
@@ -40,7 +38,6 @@ function App() {
 
       <Hero />
 
-      <Stats />
 
       <About />
 
@@ -48,7 +45,6 @@ function App() {
 
       <Projects />
 
-      <Achievements />
 
       <Education />
 
